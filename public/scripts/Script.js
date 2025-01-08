@@ -1,4 +1,4 @@
-function charge_main_menu(){
+/* function charge_main_menu(){
     fetch('http://192.168.0.150:3000/platos')
         .then(response => response.json())
         .then(data => {
@@ -48,19 +48,107 @@ function charge_main_menu(){
             });
         })
         .catch(error => console.error('error: ', error));
-}
-function iniciar(){
-    charge_main_menu();
-}
-// -- 
-// function arrayBuffertoBase64(buffer){
-//     let binary = '';
-//     const bytes = new Uint8Array(buffer);
-//     const len = bytes.byteLength;
-//     for(let i = 0; i < len; i++){
-//         binary += String.fromCharCode(bytes[i]);
-//     }
-//     return window.btoa(binary);
-// }
+} */
 
+/*NOTA: la funcion anterior la use para rellenar el Main con los registros
+devueltos desde la api, pero se cargaban todos, fue bueno para probar pero por ahora
+construire una mejor funcion para manejar los datos.*/
+
+function iniciar() {
+  // charge_main_menu();
+
+  var izq_bttn = document.getElementById("izquierda");
+  var der_bttn = document.getElementById("derecha");
+
+  // var img_izq = document.getElementById("plato_menu_0");
+  // img_izq.addEventListener("click", carrusel_anterior);
+
+  izq_bttn.addEventListener("click", carrusel_anterior);
+  der_bttn.addEventListener("click", carrusel_siguiente);
+
+  obtener_platos();
+}
+function obtener_platos() {
+  //Esta funcion llama los registros de Platos_pedidos del servidor.
+  return fetch("http://192.168.0.150:3000/platos")
+    .then((response) => response.json())
+    .then((data) => {
+      platos_disponibles = data;
+      console.log(platos_disponibles);
+      mostrar_carrusel();
+    })
+    .catch((error) => console.error("Error: ", error));
+}
+
+function mostrar_carrusel() {
+  const carrusel = document.getElementById("menu_carusell");
+  carrusel.innerHTML = ""; //Limpiar el contenido anterior.
+
+  let numero_tarjetas = 3;
+  if (ancho_pantalla < 1250 && ancho_pantalla > 650) {
+    numero_tarjetas = 2;
+  }
+  if (ancho_pantalla < 650) {
+    numero_tarjetas = 1;
+  }
+
+  for (let i = 0; i < numero_tarjetas; i++) {
+    const index = (carrusel_index + i) % platos_disponibles.length;
+    const plato = platos_disponibles[index];
+    const tarjeta = document.createElement("div");
+    // console.log(plato[index].Descripcion);
+    //aqui se manejan los datos Binarios de las imagenes de los platos.
+    const blob = new Blob([new Uint8Array(plato.ImageData.data)], {
+      type: "image/jpeg",
+    });
+    const url = URL.createObjectURL(blob); //este nuevo URL se usa como src para la imagen en la tarjeta.
+    //fin del manejo de los datos binarios.
+    tarjeta.className = "plato_menu";
+    tarjeta.id = `plato_menu_${i}`;
+    tarjeta.innerHTML = `
+            <h3>${plato.Descripcion}</h3>
+            <img src=${url} alt="imagen del plato">
+            <p>Precio: $ ${plato.Precio_Unidad}</p>
+        `;
+    carrusel.appendChild(tarjeta);
+  }
+}
+
+function upd_size() {
+  ancho_pantalla = window.innerWidth;
+  mostrar_carrusel();
+  // console.log(ancho_pantalla);
+}
+function carrusel_siguiente() {
+  carrusel_index = (carrusel_index + 1) % platos_disponibles.length;
+  mostrar_carrusel();
+}
+
+function carrusel_anterior() {
+  console.log("anterior");
+  carrusel_index =
+    (carrusel_index - 1 + platos_disponibles.length) %
+    platos_disponibles.length;
+  // animar_izq();
+  mostrar_carrusel();
+}
+
+function animar_der() {
+  const elemento = document.getElementById("plato_menu_1");
+  elemento.classList.toggle("animado");
+}
+
+function animar_izq() {
+  const elemento = document.getElementById("plato_menu_1");
+  elemento.classList.toggle("plato_menu_anim_izq");
+}
+
+//EJECUCION DIRECTA, NO REQUIERE LLAMADA, OSEA SE LLAMA SOLA QUE PUTA.
+
+//ANONIMOUS FUNCTION! what im doing is building a global var to hold all the registers from the data base.
+var platos_disponibles = [];
+let ancho_pantalla = window.innerWidth;
+let carrusel_index = 0;
+let win_resized = false;
+window.addEventListener("resize", upd_size);
 window.addEventListener("load", iniciar);
