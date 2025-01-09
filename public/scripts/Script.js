@@ -99,8 +99,8 @@ function mostrar_carrusel() {
     // tarjeta.className = `plato_menu_${i}`;
     // tarjeta.id = `plato_menu_${i}`;
     if (tarjeta.innerHTML.trim() === "") {
-      // console.clear();
-      // console.log(tarjeta.id);
+      console.clear();
+      console.log(tarjeta.id);
 
       tarjeta.innerHTML = `
             <h3 class="nombre">${plato.Descripcion}</h3>
