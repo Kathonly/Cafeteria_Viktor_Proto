@@ -51,7 +51,7 @@
 } */
 
 /*NOTA: la funcion anterior la use para rellenar el Main con los registros
-devueltos desde la api, pero se cargaban todos, fue bueno para probar pero por ahora
+devueltos desde la API, pero se cargaban todos, fue bueno para probar pero por ahora
 construire una mejor funcion para manejar los datos.*/
 
 function iniciar() {
@@ -70,7 +70,7 @@ function iniciar() {
 }
 function obtener_platos() {
   //Esta funcion llama los registros de Platos_pedidos del servidor.
-  return fetch("http://192.168.0.150:3000/platos")
+  return fetch("http://192.168.137.1:3000/platos")
     .then((response) => response.json())
     .then((data) => {
       platos_disponibles = data;
@@ -89,23 +89,24 @@ function mostrar_carrusel() {
     const index = (carrusel_index + i) % platos_disponibles.length;
     const plato = platos_disponibles[index];
     const tarjeta = document.getElementById(`plato_menu_${i}`);
-    // console.log(plato[index].Descripcion);
+
     //aqui se manejan los datos Binarios de las imagenes de los platos.
     const blob = new Blob([new Uint8Array(plato.ImageData.data)], {
       type: "image/jpeg",
     });
     const url = URL.createObjectURL(blob); //este nuevo URL se usa como src para la imagen en la tarjeta.
     //fin del manejo de los datos binarios.
-    // tarjeta.className = `plato_menu_${i}`;
-    // tarjeta.id = `plato_menu_${i}`;
+
     if (tarjeta.innerHTML.trim() === "") {
       console.clear();
       console.log(tarjeta.id);
 
       tarjeta.innerHTML = `
-            <h3 class="nombre">${plato.Descripcion}</h3>
+            <h3 class="nombre">${plato.nombre}</h3>
             <img class="imagen" src=${url} alt="imagen del plato">
-            <p class="precio">Precio: $ ${plato.Precio_Unidad}</p>
+            <p class="precio">Precio: $ ${parseFloat(
+              plato.precio_unidad
+            ).toFixed(2)}</p>
         `;
     }
     // carrusel.appendChild(tarjeta);
