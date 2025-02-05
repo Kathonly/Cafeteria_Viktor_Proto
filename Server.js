@@ -10,9 +10,9 @@ const port = 3000;
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "alphaignite",
-  database: "Viktordb",
-  port: 3307,
+  password: "Alphaignite",
+  database: "ViktorDB",
+  port: 3306,
 });
 
 connection.connect((err) => {
@@ -29,7 +29,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, "Public")));
+app.use(express.static(path.join(__dirname, "public")));
+
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "Index.html"));
+// });
 
 app.get("/platos", (req, res) => {
   const query = "SELECT * FROM tb_catalogo_pedidos";
