@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cafeteria Viktor</title>
-    <link rel="icon" href="images/favicon.png" type="image/png" sizes="18x18" />
+    <link
+      rel="icon"
+      href="styles/images/favicon.png"
+      type="image/png"
+      sizes="18x18"
+    />
     <link rel="stylesheet" href="/styles/styles.css" />
     <!-- <script src="/Public/scripts/Script.js"></script> -->
     <script src="scripts/Script.js"></script>
@@ -12,35 +17,43 @@
   <body>
     <header>
       <section class="main_bar">
-        <div id="main_logo"><h1>Cafeteria Viktor</h1></div>
-        <a href="" class="shopping_logo"
-          ><img src="/images/shopping_car.png" alt="shopping_img"
+        <div id="main_logo">
+          <h1 class="text" onclick="go_to_main()">Cafeteria Viktor</h1>
+        </div>
+        <a href="" class="shopping_bttn"
+          ><img src="/styles/images/shopping_car.png" alt="shopping_img"
         /></a>
         <span class="nav_bar">
-          <a href="" class="nav_bttn">Menu</a>
-          <a href="" class="nav_bttn">Pedidos</a>
-          <a href="" class="nav_bttn">Catering</a>
-          <a href="" class="nav_bttn">Sobre Nosotros</a>
+          <a href="index.html" class="nav_bttn">Inicio</a>
+          <a href="catalogo_pedidos.html" class="nav_bttn"
+            >Catalogo de Pedidos</a
+          >
+          <a href="catalogo_caterin.html" class="nav_bttn"
+            >Catalogo de Catering</a
+          >
+          <a href="sobre_nosotros.html" class="nav_bttn">Sobre Nosotros</a>
         </span>
+        <div class="main_bar_link_pedidos">
+          <h2 class="main_text">ORDENA ALGO DE YA PARA YA!</h2>
+          <a href="catalogo_pedidos.html" class="main_bar_bttn_pedidos"
+            >hacer un pedido</a
+          >
+        </div>
       </section>
 
       <!-- <img src="shopping_car.png" alt="shopping car logo" class="shopping_logo"> -->
     </header>
 
-    <main>
-      <section class="pedidos">
-        <div class="main_title">
-          <h1 class="main_text">Opciones de Pedidos Disponibles</h1>
-        </div>
-        <article id="menu_carusell">
-          <div id="plato_menu_0" class="tarjeta_aux_izq"></div>
-          <div id="plato_menu_1" class="tarjeta_izq"></div>
-          <div id="plato_menu_2" class="tarjeta_cen"></div>
-          <div id="plato_menu_3" class="tarjeta_der"></div>
-          <div id="plato_menu_4" class="tarjeta_aux_der"></div>
+    <main id="main">
+      <section id="presentacion">
+        <article class="catering">
+          <div class="text_over_img">
+            <p class="over_text">TEXT_OVER_IMG</p>
+            <div class="over_color"></div>
+          </div>
+
+          <div class="main_slide_conteiner"></div>
         </article>
-        <img id="izquierda" src="images/left.jpg" alt="" />
-        <img id="derecha" src="images/right.png" alt="" />
       </section>
     </main>
 

@@ -10,7 +10,7 @@ const port = 3000;
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Alphaignite",
+  password: "Alphaignite02*",
   database: "ViktorDB",
   port: 3306,
 });
@@ -20,8 +20,16 @@ connection.connect((err) => {
   console.log("Connected to the Database");
 });
 
-app.use(favicon(path.join(__dirname, "public", "images", "favicon.png")));
-
+try {
+  app.use(
+    favicon(path.join(__dirname, "public", "styles", "images", "favicon.png"))
+  );
+} catch (error) {
+  console.error(
+    "Favicon cannot be found, either not exists or Dir is wrong, error msg: ",
+    error
+  );
+}
 app.use((req, res, next) => {
   const now = new Date();
   const formattedtime = now.toISOString();
@@ -30,10 +38,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "Index.html"));
-// });
 
 app.get("/platos", (req, res) => {
   const query = "SELECT * FROM tb_catalogo_pedidos";

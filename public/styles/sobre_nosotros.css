@@ -7,8 +7,8 @@ body {
   /* flex-direction: column; */
 }
 /* header {
-  position: sticky;
-} */
+      position: sticky;
+    } */
 
 .main_bar {
   background: linear-gradient(
@@ -70,104 +70,39 @@ body {
 .nav_bttn:hover {
   background-color: rgb(211, 54, 54);
 }
-.main_bar_link_pedidos {
-  position: absolute;
-  display: flex;
-  top: 50%;
-  left: 3%;
-  width: 40%;
-  justify-content: space-around;
-  align-items: center;
-}
-.main_bar_link_pedidos .main_text {
-  color: azure;
-  font-size: 4em;
-}
-.main_bar_link_pedidos .main_bar_bttn_pedidos {
-  /* margin-left: 4%; */
-  font-size: 3em;
-  text-align: center;
-  border-radius: 13px;
-  padding: 10px 15px;
-  color: aliceblue;
-  background-color: #ec9f05;
-}
 main {
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* flex-grow: 1; */
-}
-#presentacion {
-  height: 400px;
-  width: 85vw;
-  position: relative;
-  margin: 2% 1%;
-  background-color: #ec9f05;
-  position: relative;
-}
-.text_over_img .over_text {
-  position: absolute;
-  /* top: 1%; */
-  left: 1%;
-  font-size: 2em;
-  margin-top: 0px;
-  color: aliceblue;
-  z-index: 2;
-}
-.text_over_img .over_color {
-  position: absolute;
-  top: 0%;
-  height: 25%;
-  width: 100%;
-  background-color: black;
-  background: linear-gradient(
-    to right,
-    rgb(15, 14, 14) 5%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  /* filter: blur(3px) opacity(0.5); */
-  z-index: 1;
-}
-a {
-  text-decoration: none;
-}
-li {
-  list-style-type: none;
-}
-.network_info::after {
-  content: " aqui se uso ::after";
-  color: red;
 }
 
-footer {
+.information_cards {
+  width: 80vw;
+}
+
+.information_cards .card {
   font-size: 2em;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
-.footer_box {
-  width: 33%;
-  height: auto;
-  text-align: center;
-  margin-bottom: 5px;
+
+#resumen_negocio {
+  background-color: aquamarine;
 }
-.footer_box .network_info {
-  margin-top: 1px;
-  margin-bottom: 1px;
-}
+
 @media (max-width: 1800px) {
   #main_logo {
     font-size: 3em;
   }
   .main_bar_link_pedidos {
     top: 55%;
-    width: 45%;
+    width: 40%;
     left: 3%;
   }
 }
-
-@media (max-width: 1700px) {
+@media (max-width: 1400px) {
   .nav_bar {
     top: 32%;
     width: 60%;
@@ -177,14 +112,16 @@ footer {
     width: 40%;
     left: 3%;
   }
-  .main_bar_link_pedidos {
-    width: 40%;
-  }
   .main_bar_link_pedidos .main_text {
-    font-size: 3.4em;
+    font-size: 3em;
   }
   .main_bar_link_pedidos .main_bar_bttn_pedidos {
-    font-size: 2.5em;
+    font-size: 2em;
+  }
+  [class^="tarjeta_"] .imagen {
+    width: 170px;
+    height: auto;
+    max-height: 170px;
   }
 }
 
@@ -217,21 +154,5 @@ footer {
     font-size: 9px;
     margin: 0px 0px;
     padding: 10px 15px;
-  }
-  .main_bar_link_pedidos {
-    left: 9%;
-    width: 50%;
-    font-size: 0.7em;
-  }
-  main {
-    /* flex-grow: unset; */
-    height: 100vh;
-    overflow-x: hidden;
-  }
-  footer {
-    justify-content: center;
-  }
-  footer > div {
-    display: inline-block;
   }
 }
