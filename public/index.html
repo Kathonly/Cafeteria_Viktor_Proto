@@ -11,7 +11,6 @@
       sizes="18x18"
     />
     <link rel="stylesheet" href="/styles/styles.css" />
-    <!-- <script src="/Public/scripts/Script.js"></script> -->
     <script src="scripts/Script.js"></script>
   </head>
   <body>
@@ -36,35 +35,59 @@
         <div class="main_bar_link_pedidos">
           <h2 class="main_text">ORDENA ALGO DE YA PARA YA!</h2>
           <a href="catalogo_pedidos.html" class="main_bar_bttn_pedidos"
-            >hacer un pedido</a
+            >Pedir!</a
           >
         </div>
       </section>
-
-      <!-- <img src="shopping_car.png" alt="shopping car logo" class="shopping_logo"> -->
     </header>
 
     <main id="main">
-      <section id="presentacion">
-        <article class="catering">
-          <div class="text_over_img">
-            <p class="over_text">TEXT_OVER_IMG</p>
-            <div class="over_color"></div>
+      <section class="main_slide_container">
+        <article class="slider">
+          <div id="text_over_img">
+            <p class="over_text" id="over_name">Nombre Plato</p>
+            <p class="over_text" id="over_description">Descripcion</p>
+            <div id="over_color"></div>
           </div>
-
-          <div class="main_slide_conteiner"></div>
+          <div class="main_img_container">
+            <img alt="Catering_img" id="slider_img" />
+          </div>
         </article>
+        <div class="dot_nav">
+          <div class="dot_container">
+            <div class="individual_dot_container">
+              <div class="dot"></div>
+            </div>
+            <div class="individual_dot_container">
+              <div class="dot"></div>
+            </div>
+            <div class="individual_dot_container">
+              <div class="dot"></div>
+            </div>
+            <div class="individual_dot_container">
+              <div class="dot"></div>
+            </div>
+            <div class="individual_dot_container">
+              <div class="dot"></div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer>
-      <div class="footer_box" id="Social_box">
-        Nuestras Redes sociales
-        <p class="network_info"><a href="">Instagram</a></p>
-        <p class="network_info"><a href="">Tiktok</a></p>
+      <div id="logo_foot_container">
+        <img id="logo" src="styles/images/cooker_family.jpeg" />
       </div>
-      <div class="footer_box" id="Contact_box">Preguntas Frecuentes</div>
-      <div class="footer_box" id="FEQ_box">Contactenos</div>
+      <div id="footer_boxes">
+        <div class="footer_box" id="Social_box">
+          Nuestras Redes sociales
+          <p class="network_info"><a href="">Instagram</a></p>
+          <p class="network_info"><a href="">Tiktok</a></p>
+        </div>
+        <div class="footer_box" id="Contact_box">Preguntas Frecuentes</div>
+        <div class="footer_box" id="FEQ_box">Contactenos</div>
+      </div>
     </footer>
   </body>
 </html>

@@ -47,7 +47,21 @@ app.get("/platos", (req, res) => {
       res.status(500).json("Error en la base de datos");
       return;
     }
-    res.setHeader("Cache-Control", "public, max-age=3600");
+    res.setHeader("Cache-Control", "public, max-age=10");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Content-Type", "application/json");
+    res.json(results);
+  });
+});
+
+app.get("/catering", (req, res) => {
+  const query = "SELECT * FROM tb_catalogo_catering";
+  connection.query(query, (err, results) => {
+    if (err) {
+      res.status(500).json("Error en la base de datos");
+      return;
+    }
+    res.setHeader("Cache-Control", "public, max-age=10");
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Content-Type", "application/json");
     res.json(results);
