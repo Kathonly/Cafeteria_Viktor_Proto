@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/platos", (req, res) => {
+app.get("/pedidos", (req, res) => {
   const query = "SELECT * FROM tb_catalogo_pedidos";
 
   connection.query(query, (err, results) => {
@@ -47,7 +47,7 @@ app.get("/platos", (req, res) => {
       res.status(500).json("Error en la base de datos");
       return;
     }
-    res.setHeader("Cache-Control", "public, max-age=10");
+    res.setHeader("Cache-Control", "public, max-age=20");
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Content-Type", "application/json");
     res.json(results);
@@ -61,7 +61,7 @@ app.get("/catering", (req, res) => {
       res.status(500).json("Error en la base de datos");
       return;
     }
-    res.setHeader("Cache-Control", "public, max-age=10");
+    res.setHeader("Cache-Control", "public, max-age=20");
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Content-Type", "application/json");
     res.json(results);

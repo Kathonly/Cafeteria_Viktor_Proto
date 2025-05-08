@@ -20,7 +20,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 35vh;
+  height: 20vh;
   position: relative;
   /* font-size: 1rem; */
   display: grid;
@@ -51,7 +51,7 @@ body {
 }
 .nav_bar {
   position: absolute;
-  top: 25%;
+  top: 45%;
   width: 50vw;
   display: flex;
   justify-content: space-evenly;

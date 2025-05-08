@@ -22,7 +22,7 @@ function iniciar() {
 }
 function obtener_platos() {
   //Esta funcion llama los registros de Platos_pedidos del servidor.
-  return fetch("http://192.168.0.150:3000/platos")
+  return fetch("http://192.168.0.150:3000/pedidos")
     .then((response) => response.json())
     .then((data) => {
       platos_disponibles = data;
