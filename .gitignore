@@ -7,3 +7,6 @@ node_modules/
 #Ignorar archivos de entorno 
 .env
 
+#ignorar Workspaces
+*.code-workspaces
+
